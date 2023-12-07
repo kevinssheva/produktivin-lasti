@@ -8,7 +8,7 @@ const Navbar = () => {
   const pathName = usePathname();
   const NavbarElement = ({ name }: { name: string }) => {
     const imageUrl = useMemo(() => {
-      return `navbar/${name.toLowerCase()}-${
+      return `/navbar/${name.toLowerCase()}-${
         pathName.startsWith("/" + name.toLowerCase()) ? "filled" : "outline"
       }.svg`;
     }, [name]);
@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="flex-1 aspect-square relative">
         <div className="w-[80%] aspect-square rounded-full bg-primary-100 absolute bottom-[40%] left-1/2 -translate-x-1/2 flex justify-center items-center">
           <Image
-            src={`navbar/scan.svg`}
+            src={`/navbar/scan.svg`}
             width={100}
             height={100}
             alt="Home"
