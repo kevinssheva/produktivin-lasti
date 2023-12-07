@@ -24,7 +24,10 @@ export default function Search(props: SearchProps) {
 
   return (
     <div className="relative w-full text-[11px]  text-gray-600 flex flex-row aspect-[324/34] bg-white rounded-[15px]">
-      <button className="w-[15%] h-full absolute bg-[#422291] right-0 z-10 flex justify-center items-center rounded-r-[15px] text-white text-[20px]">
+      <button
+        className="w-[15%] h-full absolute bg-[#422291] right-0 z-10 flex justify-center items-center rounded-r-[15px] text-white text-[20px]"
+        onClick={() => onSearch(value)}
+      >
         <CiSearch />
       </button>
       <input
