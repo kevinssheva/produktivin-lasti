@@ -9,7 +9,7 @@ export default function Home() {
   const [isMembership, setIsMembership] = useState(false);
 
   return (
-    <div className="w-full h-full relative pt-10">
+    <div className="w-full h-full relative">
       <div className="mx-[5%] bg-[#7F7FDE] w-[90%] h-auto aspect-[356/71] rounded-[20px] flex items-center justify-center">
         <div className="flex flex-row w-[87%] text-white justify-between items-center">
           <div className="flex flex-col">
