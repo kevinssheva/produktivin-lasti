@@ -1,6 +1,6 @@
 "use client";
 
-import { FaWifi, FaRegCalendar, FaCouch } from "react-icons/fa6";
+import { FaWifi, FaRegCalendar, FaCouch, FaArrowRight } from "react-icons/fa6";
 import Slide from "./components/slide";
 import Image from "next/image";
 
@@ -13,7 +13,10 @@ import "./styles.css";
 // import required modules
 import { Pagination } from "swiper/modules";
 
+import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const FirstBody = (
@@ -72,10 +75,29 @@ export default function Home() {
     </>
   );
 
+  const swiperRef = useRef<SwiperType>();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const router = useRouter();
+  const handleNext = () => {
+    if (activeIndex === 2) {
+      return router.push("/register");
+    }
+    swiperRef.current?.slideNext();
+    setActiveIndex((prev) => prev + 1);
+  };
+
   return (
     <div className="w-full h-full relative">
       <div className="h-[80%]">
-        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+        <Swiper
+          pagination={true}
+          modules={[Pagination]}
+          className="mySwiper"
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          allowTouchMove={false}
+        >
           <SwiperSlide>
             <Slide index={1} body={FirstBody} />
           </SwiperSlide>
@@ -88,16 +110,28 @@ export default function Home() {
         </Swiper>
       </div>
       <div className="absolute bottom-0 w-full aspect-[100/35] flex justify-center items-center">
-        <div className="w-[40%] aspect-[100/24] rounded-full border-2 border-white z-10 cursor-pointer flex justify-between items-center pl-4">
-          {/* <Image
-            src="/landing/arrow.svg"
-            width={100}
-            height={100}
-            alt="assets"
-            className="w-[80%]"
-          /> */}
-          <p className="text-sm font-semibold text-white">Join Member</p>
-          <div className="h-full aspect-square rounded-full bg-primary-100"></div>
+        <div
+          className={`w-[40%] aspect-[100/24] rounded-full border-2 border-white z-10 cursor-pointer flex ${
+            activeIndex === 2 ? "justify-between pl-4" : "justify-center"
+          } items-center`}
+          onClick={handleNext}
+        >
+          {activeIndex === 2 ? (
+            <>
+              <p className="text-sm font-semibold text-white">Join Member</p>
+              <div className="h-full aspect-square rounded-full bg-primary-100 flex items-center justify-center">
+                <FaArrowRight className="text-white" />
+              </div>
+            </>
+          ) : (
+            <Image
+              src="/landing/arrow.svg"
+              width={100}
+              height={100}
+              alt="assets"
+              className="w-[80%]"
+            />
+          )}
         </div>
         <Image
           src="/landing/bottom.svg"
