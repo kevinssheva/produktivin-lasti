@@ -33,34 +33,20 @@ const MembershipCard = ({ monthly }: { monthly?: boolean }) => {
           <div className="w-5 aspect-square bg-white/30 rounded-full flex justify-center items-center">
             <FaCheck size={14} />
           </div>
-          <p className="text-sm">All limited links</p>
+          <p className="text-sm">All access shared space{"'"}s facility</p>
         </div>
         <div className="flex gap-2 items-center">
           <div className="w-5 aspect-square bg-white/30 rounded-full flex justify-center items-center">
             <FaCheck size={14} />
           </div>
-          <p className="text-sm">Own analytics platform</p>
+          <p className="text-sm">Free complimentary food</p>
         </div>
         <div className="flex gap-2 items-center">
           <div className="w-5 aspect-square bg-white/30 rounded-full flex justify-center items-center">
             <FaCheck size={14} />
           </div>
-          <p className="text-sm">Chat support</p>
+          <p className="text-sm">Flexible hours</p>
         </div>
-        <div className="flex gap-2 items-center">
-          <div className="w-5 aspect-square bg-white/30 rounded-full flex justify-center items-center">
-            <FaCheck size={14} />
-          </div>
-          <p className="text-sm">Optimize hashtags</p>
-        </div>
-        {!monthly && (
-          <div className="flex gap-2 items-center">
-            <div className="w-5 aspect-square bg-white/30 rounded-full flex justify-center items-center">
-              <FaCheck size={14} />
-            </div>
-            <p className="text-sm">Unlimited users</p>
-          </div>
-        )}
       </div>
       <button
         className="w-full bg-[#D8CAFF] text-primary-100 rounded-full py-2 mt-auto text-sm font-semibold"
