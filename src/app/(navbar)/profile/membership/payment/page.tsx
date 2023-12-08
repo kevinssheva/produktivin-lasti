@@ -56,7 +56,7 @@ export default function Payment() {
       </button>
       <button
         className="w-full h-auto aspect-[309/70]"
-        onClick={() => setChooseFlow(3)}
+        onClick={() => setChooseFlow(4)}
       >
         <ChoosePayment category={"shopee"} flow={chooseFlow} />
       </button>
