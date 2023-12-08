@@ -38,7 +38,11 @@ const MembershipPage = ({ membership }: MembershipPageProps) => {
         </div>
       ) : (
         <>
-          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <Modal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            id={membership.id.toUpperCase()}
+          />
           <div className="flex flex-col gap-3">
             <MembershipCard {...membership.subscription} />
             <div className="flex justify-between">
@@ -48,9 +52,12 @@ const MembershipPage = ({ membership }: MembershipPageProps) => {
               >
                 Show Barcode
               </p>
-              <p className="underline text-primary-100 text-sm font-semibold cursor-pointer">
+              <Link
+                href="/profile/membership"
+                className="underline text-primary-100 text-sm font-semibold cursor-pointer"
+              >
                 Change Plan
-              </p>
+              </Link>
             </div>
           </div>
         </>

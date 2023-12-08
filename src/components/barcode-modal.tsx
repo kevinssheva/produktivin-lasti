@@ -9,9 +9,10 @@ import Button from "./button";
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
+  id: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, id }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
@@ -58,9 +59,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <h1 className="text-2xl font-bold">Scan Barcode</h1>
             <p className="font-semibold">for enter the room</p>
             <div className="my-3 w-full bg-primary-100 rounded-xl p-3 flex flex-col justify-center items-center text-white gap-3">
-              <p className="font-semibold text-center">
-                SUBSCRIPTION ID: ASD34FDSS234
-              </p>
+              <p className="font-semibold text-center">SUBSCRIPTION ID: {id}</p>
               <Image
                 src="/barcode.svg"
                 width={200}

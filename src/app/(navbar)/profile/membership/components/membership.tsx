@@ -19,7 +19,7 @@ import { useRef, useState } from "react";
 
 const Membership = () => {
   const swiperRef = useRef<SwiperType>();
-  const [isMonthly, setIsMonthly] = useState(true);
+  const [isMonthly, setIsMonthly] = useState(false);
 
   const handleMonth = () => {
     if (isMonthly) return;
@@ -63,10 +63,10 @@ const Membership = () => {
         allowTouchMove={false}
       >
         <SwiperSlide>
-          <MembershipCard monthly />
+          <MembershipCard />
         </SwiperSlide>
         <SwiperSlide>
-          <MembershipCard />
+          <MembershipCard monthly />
         </SwiperSlide>
       </Swiper>
     </div>

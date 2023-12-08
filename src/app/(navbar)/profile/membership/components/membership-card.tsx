@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaCheck } from "react-icons/fa6";
 const MembershipCard = ({ monthly }: { monthly?: boolean }) => {
+  const router = useRouter();
   return (
-    <div className="w-full bg-pink-300 aspect-[320/443] max-w-[18rem] relative rounded-xl overflow-hidden text-white z-10 flex flex-col px-[5%] py-6">
+    <div className="w-full aspect-[320/443] max-w-[18rem] relative rounded-xl overflow-hidden text-white z-10 flex flex-col px-[5%] py-6">
       <Image
         src="/membership/background.svg"
         fill
@@ -60,7 +62,15 @@ const MembershipCard = ({ monthly }: { monthly?: boolean }) => {
           </div>
         )}
       </div>
-      <button className="w-full bg-[#D8CAFF] text-primary-100 rounded-full py-2 mt-auto text-sm font-semibold">
+      <button
+        className="w-full bg-[#D8CAFF] text-primary-100 rounded-full py-2 mt-auto text-sm font-semibold"
+        onClick={() =>
+          router.push(
+            "/profile/membership/payment?type=" +
+              (monthly ? "monthly" : "yearly")
+          )
+        }
+      >
         Choose Plan
       </button>
     </div>

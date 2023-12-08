@@ -38,14 +38,20 @@ export default function ChoosePayment(props: any) {
   }
 
   return (
-    <div className="w-full h-auto aspect-[309/70] rounded-[13px] border-[1px] border-[#6448AD] bg-white mt-6 flex flex-row items-center pl-[5%]">
-      <div className="text-[#422291] text-[20px]">
-        {choose ? <IoMdRadioButtonOn /> : <IoMdRadioButtonOff />}
+    <div
+      className={`transition w-full h-auto py-4 rounded-[13px] border-[1px] border-[#6448AD] bg-white mt-6 flex flex-row items-center pl-[5%] ${
+        choose ? "shadow-xl scale-[103%]" : "scale-100"
+      }`}
+    >
+      <div className="w-4 aspect-square border-[1px] border-primary-100 rounded-full overflow-hidden flex justify-center items-center">
+        <div
+          className={`w-full h-full bg-primary-100 rounded-full ${
+            choose ? "scale-100" : "scale-0"
+          } transition`}
+        ></div>
       </div>
       <div className="flex flex-col ml-[3%] items-start">
-        <p className="text-[#422291] font-medium text-[13px] mb-1">
-          {category}
-        </p>
+        <p className="text-[#422291] font-semibold text-lg mb-1">{category}</p>
         <Image width={60} height={100} src={gambar} alt={category} />
       </div>
     </div>

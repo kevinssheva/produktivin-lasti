@@ -5,6 +5,7 @@ import Carousel from "./components/carousel";
 import getCurrentUser from "@/actions/get-current-user";
 import prisma from "@/lib/prismadb";
 import { redirect } from "next/navigation";
+import { SubscriptionType } from "@prisma/client";
 const getMembership = async (userId: string) => {
   const membership = await prisma.userSubscription.findFirst({
     where: {
@@ -27,18 +28,14 @@ const getMembership = async (userId: string) => {
   return membership;
 };
 
-export function formatSubscriptionType(type: string) {
-  // Split the enum value by underscore, capitalize each part, and join them with a space
-  return type
-    .split("_")
-    .map((part) => part.charAt(0) + part.slice(1).toLowerCase())
-    .join(" ");
-}
-
 export default async function Home() {
   const user = await getCurrentUser();
   if (!user) redirect("/account");
   const isMembership = await getMembership(user?.id);
+  const membershipType = isMembership?.subscription.type
+    .split("_")
+    .map((part) => part.charAt(0) + part.slice(1).toLowerCase())
+    .join(" ");
   return (
     <div className="w-full pb-20 relative">
       <div className="mx-[5%] bg-[#7F7FDE] w-[90%] h-auto aspect-[356/71] rounded-[20px] flex items-center justify-center">
@@ -52,7 +49,7 @@ export default async function Home() {
               <div className="flex flex-row text-[17px]">
                 <BiSolidMedal />
                 <p className="font-medium text-[12px] ml-[3px]">
-                  {formatSubscriptionType(isMembership.subscription.type)}{" "}
+                  {membershipType}
                   Membership
                 </p>
               </div>
