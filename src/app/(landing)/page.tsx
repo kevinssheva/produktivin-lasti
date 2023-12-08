@@ -5,10 +5,10 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  console.log(session?.user);
   if (session?.user) {
     redirect("/home");
   }
-  console.log(session?.user);
 
   return (
     <div className="w-full h-full relative">

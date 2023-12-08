@@ -80,7 +80,7 @@ const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const handleNext = () => {
     if (activeIndex === 2) {
-      return router.push("/register");
+      return router.push("/account");
     }
     swiperRef.current?.slideNext();
     setActiveIndex((prev) => prev + 1);

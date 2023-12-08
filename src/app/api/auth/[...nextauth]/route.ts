@@ -1,59 +1,58 @@
-import NextAuth from 'next-auth';
-import { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcrypt';
+import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
 
-import prisma from '@/lib/prismadb';
+import prisma from "@/lib/prismadb";
 
-export const authOptions: NextAuthOptions = {
-    providers: [
-        CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                email: {
-                    label: "Email: ",
-                    type: "text",
-                },
-                password: {
-                    label: "Password: ",
-                    type: "password"
-                },
-            },
-            async authorize(credentials) {
-                if (!credentials?.email || !credentials?.password) {
-                    return null
-                }
-                
-                const user = await prisma.user.findUnique({
-                    where: {
-                        email: credentials.email,
-                    },
-                });
-
-                if (user) {
-                    const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password) 
-                    if (isPasswordCorrect) {
-                        return user;
-                    } else {
-                        throw new Error("Wrong Credentials")
-                    }
-                } else {
-                    throw new Error("User not found!")
-                }
-                
-            }
-        })
-    ],
-    secret: process.env.NEXTAUTH_SECRET,
-    pages: {
-        error: '/',
-        signIn: '/'
-    },
-    session: {
-        strategy: 'jwt'
-    },
+interface Credentials {
+  email: string;
+  password: string;
 }
 
-const handler = NextAuth(authOptions)
+export const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {},
+      async authorize(credentials) {
+        const { email, password } = credentials as Credentials;
+        if (!email || !password) {
+          throw new Error("Email and password are required");
+        }
 
-export { handler as GET, handler as POST }
+        const user = await prisma.user.findUnique({
+          where: {
+            email: email,
+          },
+        });
+
+        if (user) {
+          const isPasswordCorrect = await bcrypt.compare(
+            password,
+            user.password
+          );
+          if (isPasswordCorrect) {
+            return user;
+          } else {
+            throw new Error("Wrong Credentials");
+          }
+        } else {
+          throw new Error("User not found!");
+        }
+      },
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/account",
+  },
+  debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
+  },
+};
+
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

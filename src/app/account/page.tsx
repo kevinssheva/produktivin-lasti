@@ -1,4 +1,4 @@
-import RegisterForm from "./components/register-form";
+import AuthForm from "./components/auth-form";
 import Image from "next/image";
 
 const Page = () => {
@@ -30,7 +30,7 @@ const Page = () => {
           className="w-1/2 mx-auto mt-4"
         />
       </div>
-      <RegisterForm />
+      <AuthForm />
     </div>
   );
 };

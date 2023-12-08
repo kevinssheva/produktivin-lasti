@@ -23,7 +23,7 @@ const scheduleData = [
 
 const Page = () => {
   return (
-    <div className="w-full overflow-y-auto h-full">
+    <div className="w-full overflow-y-auto h-full px-[5%]">
       <h1 className="font-semibold text-lg mb-5">Your Booking Schedule</h1>
       <div className="w-full flex flex-col gap-4 pb-5">
         {scheduleData.map((data, index) => (

@@ -2,11 +2,13 @@ import { HiTicket } from "react-icons/hi2";
 import { FaBell } from "react-icons/fa";
 import { HiInformationCircle } from "react-icons/hi";
 import Image from "next/image";
-import { IoLogOut } from "react-icons/io5";
+import SignOut from "./components/sign-out";
+import getSession from "@/actions/get-session";
 
-const Page = () => {
+const Page = async () => {
+  const session = await getSession();
   return (
-    <div className="w-full h-full flex flex-col pb-10">
+    <div className="w-full h-full flex flex-col pb-10 px-[5%]">
       <h1 className="font-semibold text-lg mb-5">Profile</h1>
       <div className="w-full flex items-center gap-4">
         <div className="bg-gray-300 w-20 aspect-square rounded-full relative overflow-hidden">
@@ -18,7 +20,7 @@ const Page = () => {
           />
         </div>
         <div>
-          <h1 className="font-semibold text-lg">Kevin Sebastian</h1>
+          <h1 className="font-semibold text-lg">{session?.user?.name}</h1>
           <p className="text-primary-100">Edit Profile</p>
         </div>
       </div>
@@ -35,10 +37,7 @@ const Page = () => {
           <HiInformationCircle />
           <p>About</p>
         </div>
-      </div>
-      <div className="mt-auto w-full bg-gradient-to-b from-red-600 to-red-500 flex text-white items-center rounded-xl py-3 px-4 gap-2">
-        <IoLogOut />
-        <p>Log Out</p>
+        <SignOut />
       </div>
     </div>
   );

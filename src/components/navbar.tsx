@@ -29,7 +29,7 @@ const Navbar = () => {
     );
   };
   return (
-    <div className="h-[4.2rem] bg-white flex justify-arround">
+    <div className="h-[4.2rem] bg-white flex justify-arround z-50">
       <NavbarElement name="Home" />
       <NavbarElement name="Search" />
       <div className="flex-1 aspect-square relative">
