@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import ToasterContext from "@/context/toaster-context";
 
 const DMSans = DM_Sans({ subsets: ["latin"] });
 
@@ -17,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={DMSans.className}>
-        <div className="max-w-[24.375rem] mx-auto h-full bg-[#F2F6FE]">{children}</div>
+        <ToasterContext />
+        <div className="max-w-[24.375rem] mx-auto h-full bg-[#F2F6FE]">
+          {children}
+        </div>
       </body>
     </html>
   );

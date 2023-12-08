@@ -1,10 +1,15 @@
 "use client";
 
-import Button from "@/app/components/button";
-import Input from "@/app/components/input";
-import { FieldValues, useForm } from "react-hook-form";
+import Button from "@/components/button";
+import Input from "@/components/input";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -20,10 +25,10 @@ const RegisterForm = () => {
     },
   });
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     //TODO: Handle submit
     if (data["password"] !== data["confirmPassword"]) {
-      setError(
+      return setError(
         "confirmPassword",
         {
           type: "manual",
@@ -34,6 +39,28 @@ const RegisterForm = () => {
         }
       );
     }
+
+    axios
+      .post("/api/register", data)
+      .then(() =>
+        signIn("Credentials", {
+          ...data,
+          redirect: false,
+          callbackUrl: "/home",
+        })
+      )
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error("Invalid Credentials");
+        }
+
+        if (callback?.ok) {
+          router.push("/home");
+        }
+      })
+      .catch((err) => {
+        toast.error("Something went wrong!");
+      });
   };
   return (
     <form
