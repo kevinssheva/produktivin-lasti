@@ -4,6 +4,7 @@ import { HiInformationCircle } from "react-icons/hi";
 import Image from "next/image";
 import SignOut from "./components/sign-out";
 import getSession from "@/actions/get-session";
+import Link from "next/link";
 
 const Page = async () => {
   const session = await getSession();
@@ -25,10 +26,13 @@ const Page = async () => {
         </div>
       </div>
       <div className="w-full flex flex-col mt-4 gap-3 flex-1">
-        <div className="w-full bg-gradient-to-b from-primary-100 to-primary-200 flex text-white items-center rounded-xl py-3 px-4 gap-2">
+        <Link
+          href="/profile/my-membership"
+          className="w-full bg-gradient-to-b from-primary-100 to-primary-200 flex text-white items-center rounded-xl py-3 px-4 gap-2"
+        >
           <HiTicket />
           <p>My Membership</p>
-        </div>
+        </Link>
         <div className="w-full bg-gradient-to-b from-primary-100 to-primary-200 flex text-white items-center rounded-xl py-3 px-4 gap-2">
           <FaBell />
           <p>Notification</p>
