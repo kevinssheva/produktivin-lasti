@@ -4,12 +4,12 @@ import { FaCheck } from "react-icons/fa6";
 const MembershipCard = ({ monthly }: { monthly?: boolean }) => {
   const router = useRouter();
   return (
-    <div className="w-full aspect-[320/443] max-w-[18rem] relative rounded-xl overflow-hidden text-white z-10 flex flex-col px-[5%] py-6">
+    <div className="w-full bg-pink-200 aspect-[320/443] max-w-[18rem] relative rounded-xl overflow-hidden text-white z-10 flex flex-col px-[5%] py-6">
       <Image
         src="/membership/background.svg"
         fill
         alt="assets"
-        className="w-[120%] object-none object-center -z-10"
+        className="w-full h-full object-cover -z-10"
       />
       {!monthly && (
         <div className="absolute px-2 py-1 text-[0.7rem] text-white/90 tracking-wider bg-primary-100 right-4 top-4 rounded-full">

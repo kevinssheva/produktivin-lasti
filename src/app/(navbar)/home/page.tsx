@@ -6,7 +6,7 @@ import getCurrentUser from "@/actions/get-current-user";
 import prisma from "@/lib/prismadb";
 import { redirect } from "next/navigation";
 import { SubscriptionType } from "@prisma/client";
-const getMembership = async (userId: string) => {
+export const getMembership = async (userId: string) => {
   const membership = await prisma.userSubscription.findFirst({
     where: {
       userId,
@@ -49,8 +49,7 @@ export default async function Home() {
               <div className="flex flex-row text-[17px]">
                 <BiSolidMedal />
                 <p className="font-medium text-[12px] ml-[3px]">
-                  {membershipType}
-                  Membership
+                  {membershipType} Membership
                 </p>
               </div>
             ) : (

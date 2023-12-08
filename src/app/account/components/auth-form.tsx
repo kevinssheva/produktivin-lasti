@@ -5,13 +5,14 @@ import Input from "@/components/input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const AuthForm = () => {
   const router = useRouter();
   const [type, setType] = useState("REGISTER");
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,7 +28,16 @@ const AuthForm = () => {
     },
   });
 
+  useEffect(() => {
+    if (isLoading) {
+      toast.loading("Loading...");
+    } else {
+      toast.dismiss();
+    }
+  }, [isLoading]);
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsLoading(true);
     //TODO: Handle submit
     if (type === "REGISTER") {
       if (data["password"] !== data["confirmPassword"]) {
@@ -54,16 +64,24 @@ const AuthForm = () => {
         )
         .then((callback) => {
           if (callback?.error) {
-            toast.error("Invalid Credentials");
+            setTimeout(() => {
+              toast.error("Invalid Credentials");
+            }, 500);
           }
 
           if (callback?.ok) {
+            setTimeout(() => {
+              toast.success("Login Success");
+            }, 500);
             router.push("/home");
           }
         })
         .catch((err) => {
-          toast.error("Something went wrong!");
-        });
+          setTimeout(() => {
+            toast.error("Something went wrong!");
+          }, 500);
+        })
+        .finally(() => setIsLoading(false));
     }
 
     if (type === "LOGIN") {
@@ -74,16 +92,24 @@ const AuthForm = () => {
       })
         .then((callback) => {
           if (callback?.error) {
-            toast.error("Invalid Credentials");
+            setTimeout(() => {
+              toast.error("Invalid Credentials");
+            }, 500);
           }
 
           if (callback?.ok) {
+            setTimeout(() => {
+              toast.success("Login Success");
+            }, 500);
             router.push("/home");
           }
         })
         .catch((err) => {
-          toast.error("Something went wrong!");
-        });
+          setTimeout(() => {
+            toast.error("Something went wrong!");
+          }, 500);
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
@@ -121,6 +147,7 @@ const AuthForm = () => {
             register={register}
             errors={errors}
             required
+            disabled={isLoading}
           />
         </div>
       )}
@@ -132,6 +159,7 @@ const AuthForm = () => {
           register={register}
           errors={errors}
           required
+          disabled={isLoading}
         />
       </div>
       {type === "REGISTER" && (
@@ -145,6 +173,7 @@ const AuthForm = () => {
             type="number"
             isPhone
             required
+            disabled={isLoading}
           />
         </div>
       )}
@@ -157,6 +186,7 @@ const AuthForm = () => {
           errors={errors}
           type="password"
           required
+          disabled={isLoading}
         />
       </div>
       {type === "REGISTER" && (
@@ -169,11 +199,12 @@ const AuthForm = () => {
             errors={errors}
             type="password"
             required
+            disabled={isLoading}
           />
         </div>
       )}
       <div className="mx-auto mt-auto">
-        <Button text="Submit" />
+        <Button text="Submit" disabled={isLoading} />
       </div>
       {type === "REGISTER" ? (
         <p className="text-center">

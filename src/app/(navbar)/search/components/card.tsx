@@ -20,9 +20,9 @@ export default function Card(props: any) {
           </div>
         </div>
         <button className="bg-[#422291] text-[0.7rem] text-white font-bold bottom-2 px-4 absolute right-2 rounded-[10px] py-1">
-          {props.category === "fyp"
+          {props.category === "Room"
             ? "View Availability"
-            : props.category === "event"
+            : props.category === "Event"
             ? "Register Event"
             : null}
         </button>

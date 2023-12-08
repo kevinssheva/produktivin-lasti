@@ -14,43 +14,55 @@ import "swiper/css/pagination";
 export default function Carousel(props: any) {
   const fyp = [
     {
-      src: "/landing/first.svg",
+      src: "/dummy/open-1.jpg",
       nama: "Open Space A",
+      alamat: "Produktiv.in 1st Floor",
+      waktu: "Available 24 hours",
+    },
+    {
+      src: "/dummy/open-2.jpg",
+      nama: "Open Space B",
       alamat: "Produktiv.in 3rd Floor",
       waktu: "Available 24 hours",
     },
     {
-      src: "/landing/first.svg",
-      nama: "Open Space B",
-      alamat: "Tamansari",
-      waktu: "Available 12 hours",
+      src: "/dummy/room-1.jpg",
+      nama: "Room A",
+      alamat: "Produktiv.in 2nd Floor",
+      waktu: "Available 18 hours",
     },
     {
-      src: "/landing/first.svg",
-      nama: "Open Space C",
-      alamat: "Dipatiukur",
-      waktu: "Available 17 hours",
+      src: "/dummy/room-2.jpg",
+      nama: "Room B",
+      alamat: "Produktiv.in 3rd Floor",
+      waktu: "Available 18 hours",
+    },
+    {
+      src: "/dummy/room-3.jpg",
+      nama: "Room C",
+      alamat: "Produktiv.in 2nd Floor",
+      waktu: "Available 18 hours",
     },
   ];
 
   const event = [
     {
-      src: "/landing/first.svg",
+      src: "/dummy/event-1.jpg",
       nama: "High Tech & Hip Hop",
       alamat: "Produktiv.in 4th Floor",
       waktu: "December 7, 7:00 AM - 9:00 AM",
     },
     {
-      src: "/landing/first.svg",
-      nama: "Disko Pantera",
-      alamat: "GBK",
-      waktu: "Now",
+      src: "/dummy/event-2.jpg",
+      nama: "Seminar About Startup",
+      alamat: "Produktiv.in 4th Floor",
+      waktu: "December 9, 9:00 AM - 12:00 AM",
     },
     {
-      src: "/landing/first.svg",
-      nama: "Apa kek",
-      alamat: "Sokin",
-      waktu: "bsk jam 9 pagi",
+      src: "/dummy/event-3.jpg",
+      nama: "Talkshow with CEO of Gojek",
+      alamat: "Produktiv.in 4th Floor",
+      waktu: "December 10, 7:00 AM - 9:00 AM",
     },
   ];
 
