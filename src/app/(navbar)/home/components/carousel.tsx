@@ -1,4 +1,6 @@
-import Card from "./card";
+"use client";
+
+import Card from "../../search/components/card";
 
 import "swiper/css";
 

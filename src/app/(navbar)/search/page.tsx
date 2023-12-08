@@ -69,7 +69,7 @@ export default function SearchPage() {
   };
   return (
     <div className="w-full h-full relative px-[5%]">
-      <p className="text-black font-medium text-[21px]">Search</p>
+      <h1 className="font-semibold text-lg mb-5">Search</h1>
       <Search onSearch={handleSearch} />
       {searched.length > 0 ? (
         <div className="mt-2">

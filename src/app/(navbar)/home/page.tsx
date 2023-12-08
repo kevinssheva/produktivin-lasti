@@ -1,24 +1,59 @@
-"use client";
-
 import { useState } from "react";
 import { BiSolidMedal } from "react-icons/bi";
 import CategoryCard from "./components/category-card";
 import Carousel from "./components/carousel";
+import getCurrentUser from "@/actions/get-current-user";
+import prisma from "@/lib/prismadb";
+import { redirect } from "next/navigation";
+const getMembership = async (userId: string) => {
+  const membership = await prisma.userSubscription.findFirst({
+    where: {
+      userId,
+      isActive: true,
+      subscription: {
+        endDate: {
+          gte: new Date(),
+        },
+      },
+    },
+    select: {
+      subscription: {
+        select: {
+          type: true,
+        },
+      },
+    },
+  });
+  return membership;
+};
 
-export default function Home() {
-  const [isMembership, setIsMembership] = useState(false);
+export function formatSubscriptionType(type: string) {
+  // Split the enum value by underscore, capitalize each part, and join them with a space
+  return type
+    .split("_")
+    .map((part) => part.charAt(0) + part.slice(1).toLowerCase())
+    .join(" ");
+}
 
+export default async function Home() {
+  const user = await getCurrentUser();
+  if (!user) redirect("/account");
+  const isMembership = await getMembership(user?.id);
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full pb-20 relative">
       <div className="mx-[5%] bg-[#7F7FDE] w-[90%] h-auto aspect-[356/71] rounded-[20px] flex items-center justify-center">
-        <div className="flex flex-row w-[87%] text-white justify-between items-center">
+        <div className="flex flex-row pl-4 pr-3 w-full text-white justify-between items-center">
           <div className="flex flex-col">
-            <p className="font-medium text-[19px]">Hello, Kevin!</p>
+            <p className="font-medium text-lg">
+              Hello,{" "}
+              <span className="font-bold">{user.name.split(" ")[0]}!</span>
+            </p>
             {isMembership ? (
               <div className="flex flex-row text-[17px]">
                 <BiSolidMedal />
                 <p className="font-medium text-[12px] ml-[3px]">
-                  Starter Pro Membership
+                  {formatSubscriptionType(isMembership.subscription.type)}{" "}
+                  Membership
                 </p>
               </div>
             ) : (
@@ -28,8 +63,8 @@ export default function Home() {
             )}
           </div>
           {!isMembership ? (
-            <button className="w-[37%] h-[20px] bg-[#422291] rounded-[10px]">
-              <p className="text-white font-bold text-[9px]">
+            <button className="px-3 py-1 bg-[#422291] rounded-[10px]">
+              <p className="text-white font-bold text-[0.6rem]">
                 Join Member Now!
               </p>
             </button>
@@ -43,15 +78,13 @@ export default function Home() {
         <CategoryCard category="Event" />
       </div>
 
-      <p className="text-black ml-[8%] text-[13px] font-medium mt-7">
-        Recommend For You
-      </p>
+      <p className="text-black ml-[8%] font-semibold mt-7">Recommend For You</p>
 
       <div className="mt-3">
         <Carousel category="for you" />
       </div>
 
-      <p className="text-black ml-[8%] text-[13px] font-medium mt-7">
+      <p className="text-black ml-[8%] font-semibold mt-7">
         Recommend Event You
       </p>
 
