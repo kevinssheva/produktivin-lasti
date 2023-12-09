@@ -69,19 +69,25 @@ Produktiv.in is licensed under the Group 03 (Class 1) Information Systems and Te
 ## Screenshot Layar
 
 Schedule Room
+
 <img src="/docs/schedule.png?"/>
 
 Profile
+
 <img src="/docs/profile.png?"/>
 
 Starter Pro Membership Plan
+
 <img src="/docs/starter pro membership.png?"/>
 
 Exclusive Membership Plan
+
 <img src="/docs/exclusive membership.png?"/>
 
 Payment
+
 <img src="/docs/payment.png?"/>
 
 Barcode Room Access
+
 <img src="/docs/barcode room.png?"/>
