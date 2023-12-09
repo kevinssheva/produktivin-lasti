@@ -69,7 +69,7 @@ Produktiv.in is licensed under the Group 03 (Class 1) Information Systems and Te
 ## Screenshot Layar
 
 Schedule Room
-<img src="/docs/schedule.jpg?"/>
+<img src="/docs/schedule.png?"/>
 
 
 
