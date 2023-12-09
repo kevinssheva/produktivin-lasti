@@ -30,3 +30,5 @@ Belum memiliki akun:
 4. Masukkan seluruh data diri yang diminta yaitu nama, email, nomor handphone, dan membuat password. Setelah semua terisi klik "Submit"
 5. Anda telah berhasil membuat akun dan masuk ke dalam sistem produktivin
 6. Pada Navigation Bar pilih "profile"
+
+
