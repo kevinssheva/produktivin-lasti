@@ -26,7 +26,7 @@ Belum memiliki akun:
 
 1. Membuka link https://produktivin-lasti.vercel.app/
 2. Pada landing page terdapat beberapa informasi mengenai co-working space, dan anda dapat klik tombol " →" untuk pindah ke halaman selanjutnya
-3.Lalu, klik "join member" untuk mendaftarkan diri pada aplikasi produktivin
+3. Lalu, klik "join member" untuk mendaftarkan diri pada aplikasi produktivin
 4. Masukkan seluruh data diri yang diminta yaitu nama, email, nomor handphone, dan membuat password. Setelah semua terisi klik "Submit"
 5. Anda telah berhasil membuat akun dan masuk ke dalam sistem produktivin
 6. Pada Navigation Bar pilih "profile"
