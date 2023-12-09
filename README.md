@@ -18,7 +18,7 @@ melakukan scan barcode pada smart door yang ada.
 ## Implementasi
 
 * link access: https://produktivin-lasti.vercel.app/
-* link github: https://github.com/kevinssheva/produktivin-lasti
+* link github: https://bit.ly/SourceCodeGithubProduktivin
 
 ## Pedoman penggunaan
 
