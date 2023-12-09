@@ -68,6 +68,30 @@ Produktiv.in is licensed under the Group 03 (Class 1) Information Systems and Te
 
 ## Screenshot Layar
 
+Landing Page (1)
+
+<img src="/docs/landing_page1.png?"/>
+
+Landing Page (2)
+
+<img src="/docs/landing_page2.png?"/>
+
+Landing Page (3)
+
+<img src="/docs/landing_page3.png?"/>
+
+Register Account
+
+<img src="/docs/Register.png?"/>
+
+Homepage
+
+<img src="/docs/homepage.png?"/>
+
+Search Room
+
+<img src="/docs/search.png?"/>
+
 Schedule Room
 
 <img src="/docs/schedule.png?"/>
@@ -82,7 +106,7 @@ Starter Pro Membership Plan
 
 Exclusive Membership Plan
 
-<img src="/docs/exclusive membership.png?"/>
+<img src="/docs/exclusive merbership.png?"/>
 
 Payment
 
