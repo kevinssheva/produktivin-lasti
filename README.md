@@ -58,3 +58,18 @@ Sudah memiliki akun:
 14. Lalu anda dapat mendapatkan access barcode dengan klik "show barcode"
 15. Anda dapat keluar dari akun anda dengan klik "Log out" pada halaman profile
 
+## License
+
+Produktiv.in is licensed under the Group 03 (Class 1) Information Systems and Technology, STEI ITB 2023.</font>
+
+## Tech Stack
+
+[![My Skills](https://skillicons.dev/icons?i=tailwind,nextjs,mongodb,typescript)](https://skillicons.dev)
+
+## Screenshot Layar
+
+Schedule Room
+<img src="/doc/schedule.jpg?"/>
+
+
+
