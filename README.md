@@ -1,6 +1,6 @@
-# Produktivin
+# Produktiv.in
 
-Produktivin adalah sebuah web-application hasil implementasi tugas besar dalam melakukan service engineering pada smart co-working space yang dapat akses melalui smartphone. 
+Produktiv.in adalah sebuah web-application hasil implementasi tugas besar dalam melakukan service engineering pada smart co-working space yang dapat akses melalui smartphone. 
 Produktivin merupakan hasil implementasi pada proses penerimaan dan manajemen pelanggan. Melalui Produktivin pelanggan dapat meregistrasikan diri sebagai pengguna baru pada 
 co-working space. Tipe dari setiap akun baru ialah non-membership yang tidak memiliki keuntungan tertentu. Untuk mendapatkan pengalaman yang lebih, pengguna dapat melakukan 
 pembelian paket pro membership untuk mendapatkan beberapa keuntungan diantaranya adalah akses ke seluruh shared space tanpa dikenakan biaya , mendapatkan makanan gratis, dan 
